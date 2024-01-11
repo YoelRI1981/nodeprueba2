@@ -1,5 +1,5 @@
 
-const Movie = require('./movie.model');
+const Movie = require('./movie.models');
  
  
 // get all
@@ -32,7 +32,7 @@ const createMovie = async (request, response) => {
     const movie = new Movie(request.body);
     try {
         await movie.save();
-        response.status(201).json({message: 'La película fue creada con éxito', movie: movie})
+        response.status(201).json({movie})
  
     } catch (error) {
         console.log(error.message);
@@ -46,7 +46,7 @@ const updateMovie = async (request, response) => {
     try {
         const id = request.params.id;
         const body = request.params.body;
-        const movie = await Movie.findByIdAndUpdate(id, body, );
+        const movie = await Movie.findByIdAndUpdate(id, body,{new: true} );
         response.status(200).json(movie);
  
     } catch (error) {

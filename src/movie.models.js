@@ -4,38 +4,34 @@ const movieScheme = new mongoose.Schema(
     {
         title: {
             type: String,
-            require: [true, "The movie need an unique name"],
+            required: true, 
             unique: true,
             trim: true,
             minlenght: 2,
+          
+        
+      
         },
         director: {
             type: String,
+            required: true, 
             trim: true,
+            
+      
         },
         year: {
             type: Number,
-            require: [true, "Add the year when the movie was launched"],
+            required: true, 
             trim: true,
         },
         genre: {
             type: String,
-            require: [true, "The movies needs atleast 1 genre"],
+            required: true,
             trim: true,
+            
+      
         },
-        actors: {
-            type: Array,
-            require: [true, "The movie needs atleast 1 actor"],
-            trim: true,
-        },
-        rated: {
-            type: Number,
-            trim: true,
-        },
-        studio: {
-            type: String,
-            trim: true,
-        },
+        
     },
     {
         timestamps: true,

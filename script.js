@@ -12,13 +12,15 @@ const connectMongo= require("./utils/db");
 connectMongo();
 
 const app = express();
+
+app.use(express.json());
  
 
 
 /* ROUTES */
-const movieRouter = require("./");
+const movieRouter = require("./src/movie.routes");
 
-app.use("api/movies", movieRouter);
+app.use("/api/movies", movieRouter);
 
 
 
